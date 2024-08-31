@@ -44,7 +44,9 @@ def increase(request: Request, number: int):
     x_forwarded_for = request.headers.get('X-Forwarded-For')
     ip_address = None
     if x_forwarded_for:
+
         ip_address = x_forwarded_for.split(',')[0]
+        print(ip_address)
     else:
         # Fall back to the client IP address
         ip_address = "176.28.251.255"
