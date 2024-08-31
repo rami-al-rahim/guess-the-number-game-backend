@@ -35,9 +35,6 @@ async def leaderboard(request: Request):
 
 @app.post("/database/increase/{number}")
 def increase(request: Request, number: int):
-    x_forwarded_for = request.headers.get('X-Forwarded-For')
-    if x_forwarded_for:
-        print(x_forwarded_for.split(',')[0])
     # Generate a random number between 1 and 10
     random_number = random.randint(1, 10)
     print(random_number)
@@ -47,9 +44,7 @@ def increase(request: Request, number: int):
     x_forwarded_for = request.headers.get('X-Forwarded-For')
     ip_address = None
     if x_forwarded_for:
-
         ip_address = x_forwarded_for.split(',')[0]
-        print(ip_address)
     else:
         # Fall back to the client IP address
         ip_address = "176.28.251.255"
