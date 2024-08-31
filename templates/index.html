@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            scrollbar-width: 0;
+            overflow: hidden;
+        }
+
+        .body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-container .btn-primary {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .login-container .form-text {
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Guess The number</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul style="margin: auto;" class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dev">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dev">About</a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" onclick="window.open('/dev')" style="margin-right: 20px;"
+                type="submit">Login</button>
+            <button class="btn btn-success my-2 my-sm-0" onclick="window.open('/dev')" type="submit">Create Account</button>
+
+        </div>
+    </nav>
+    <div class="body">
+        <div class="login-container">
+            <h2 style="text-align: center;">Guess the number</h2>
+            <div class="form-group">
+                <label for="number">The number</label>
+                <input type="number" min="1" max="10" required class="form-control" id="number"
+                    placeholder="Enter number from 1 - 10">
+            </div>
+            <button type="submit" id="submitNumber" class="btn btn-primary">Submit</button>
+            <small class="form-text text-muted mt-3">Want see LeaderBoard? <a
+                    href="/dev">Leaderboard</a></small>
+        </div>
+    </div>
+
+    <script type="module">
+        import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@8/src/sweetalert2.js'
+        import 'https://unpkg.com/axios@1.6.7/dist/axios.min.js';
+
+        document.getElementById("submitNumber").onclick = function () {
+            Swal.fire({
+                title: "loading..",
+                showCloseButton: false,
+                showCancelButton: false,
+                showConfirmButton: false,
+                allowEscapeKey: false,
+                allowOutsideClick: false
+            })
+            // make request to the server
+            var result = axios.post(`/database/increase/${document.getElementById("number").value}`)
+            // get the result
+            if (result.status == 200) {
+                // the answer is true
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Your answer is true!",
+                    icon: "success"
+                });
+            } else {
+                // the answer is false
+                Swal.fire({
+                    title: "Try again",
+                    text: "Your answer is false!",
+                    icon: "error"
+                });
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

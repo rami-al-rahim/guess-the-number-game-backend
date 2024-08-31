@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-container .btn-primary,
+        .btn-google,
+        .btn-microsoft {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .login-container .form-text {
+            text-align: center;
+        }
+
+        .btn-google {
+            background-color: #dd4b39;
+            color: white;
+        }
+
+        .btn-google:hover {
+            background-color: #c23321;
+            color: white;
+        }
+
+        .btn-microsoft {
+            background-color: #0078d4;
+            color: white;
+        }
+
+        .btn-microsoft:hover {
+            background-color: #005a9e;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.css">
+</head>
+
+<body>
+    <div style="width: auto;" class="login-container">
+        <h2 style="text-align: center;">Leaderboard</h2>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Country</th>
+                <th scope="col" style="padding-left: 200px;">Count</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <th scope="row">1</th>
+                <td>Jordan</td>
+                <td style="padding-left: 200px;">20</td>
+              </tr>
+            </tbody>
+          </table>
+        <small class="form-text text-muted mt-3">Want see submit number? <a href="/">Submit number</a></small>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
