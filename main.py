@@ -35,6 +35,9 @@ async def leaderboard(request: Request):
 
 @app.post("/database/increase/{number}")
 def increase(request: Request, number: int):
+    x_forwarded_for = request.headers.get('X-Forwarded-For')
+    if x_forwarded_for:
+        print(x_forwarded_for.split(',')[0])
     # Generate a random number between 1 and 10
     random_number = random.randint(1, 10)
     print(random_number)
